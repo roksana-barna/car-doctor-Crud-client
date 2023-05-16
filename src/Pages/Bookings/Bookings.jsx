@@ -7,7 +7,13 @@ const Bookings = () => {
     const [bookings,setBookings]=useState([])
     const url =(`http://localhost:5000/bookings?email${user?.email}`);
     useEffect(()=>{
- fetch(url)
+ fetch(url,{
+  // jwt
+  method:'GET',
+  headers:{
+    authorization:`Bearer${localStorage.getItem('car-accress-token')}`
+  }
+ })
  .then(res=>res.json())
  .then(data=>setBookings(data))
     },[url]);
@@ -36,7 +42,7 @@ const Bookings = () => {
         headers:{
           'content-type':'application/json'
         },
-        body:JSON.stringify({status:'confirm'})
+        body:JSON.stringify({status:'confirm' })
       })
       .then(res=>res.json())
       .then(data=>{
