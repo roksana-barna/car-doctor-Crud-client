@@ -24,7 +24,7 @@ const CheckOut = () => {
         }
         console.log(booking);
         // booking data to server /bookings
-        fetch('http://localhost:5000/bookings',{
+        fetch('https://car-doctor-crud-server-alpha.vercel.app/bookings',{
           method:'POST',
           headers:{
             'content-type':'application/json'
