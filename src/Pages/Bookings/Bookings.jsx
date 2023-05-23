@@ -8,15 +8,19 @@ const Bookings = () => {
     const url =(`https://car-doctor-crud-server-alpha.vercel.app/bookings?email${user?.email}`);
     useEffect(()=>{
  fetch(url,{
+
   // jwt
   method:'GET',
   headers:{
-    authorization:`Bearer${localStorage.getItem('car-accress-token')}`
+    authorization:`Bearer ${localStorage.getItem('car-accress-token')}`
   }
  })
+ 
+
  .then(res=>res.json())
  .then(data=>setBookings(data))
     },[url]);
+
     const handleDelete =id=>{
       const proceed =confirm('are you want to delete?')
       if(proceed){
